@@ -1,8 +1,9 @@
 package com.semptian.entity;
 
-import java.io.Serializable;
+import org.elasticsearch.common.geo.GeoPoint;
 
-public class BlogEntity implements Serializable {
+public class BlogEntity {
+
     private String id;
 
     private String title;
@@ -10,6 +11,8 @@ public class BlogEntity implements Serializable {
     private String posttime;
 
     private String content;
+
+    private GeoPoint geoPoint;
 
     public String getId() {
         return id;
@@ -43,13 +46,11 @@ public class BlogEntity implements Serializable {
         this.content = content;
     }
 
-    @Override
-    public String toString() {
-        return "BlogEntity{" +
-                "id='" + id + '\'' +
-                ", title='" + title + '\'' +
-                ", posttime='" + posttime + '\'' +
-                ", content='" + content + '\'' +
-                '}';
+    public GeoPoint getGeoPoint() {
+        return geoPoint;
+    }
+
+    public void setGeoPoint(GeoPoint geoPoint) {
+        this.geoPoint = geoPoint;
     }
 }

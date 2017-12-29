@@ -20,4 +20,11 @@
         <property name="suffix" value=".jsp" />
     </bean>
 
+    <!-- 对静态资源文件的访问  方案一 （二选一） -->
+    <!--<mvc:default-servlet-handler/>-->
+
+    <!-- 对静态资源文件的访问  方案二 （二选一）-->
+    <mvc:resources mapping="/js/**" location="/js/" cache-period="31556926"/>
+    <mvc:resources mapping="/css/**" location="/css/" cache-period="31556926"/>
+
 </beans>

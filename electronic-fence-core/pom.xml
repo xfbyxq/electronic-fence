@@ -82,6 +82,10 @@
             <artifactId>google-maps-services</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+        </dependency>
 
     </dependencies>
 </project>

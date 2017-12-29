@@ -1,8 +1,12 @@
 package com.semptian.entity;
 
 import org.elasticsearch.common.geo.GeoPoint;
+import org.elasticsearch.common.xcontent.XContentBuilder;
 
+import java.io.IOException;
 import java.io.Serializable;
+
+import static org.elasticsearch.common.xcontent.XContentFactory.jsonBuilder;
 
 public class PersionPositionEntity implements Serializable{
 
@@ -65,4 +69,28 @@ public class PersionPositionEntity implements Serializable{
     public void setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
     }
+
+    @Override
+    public String toString(){
+        XContentBuilder jsonBuild = null;
+        try {
+            jsonBuild = jsonBuilder()
+            .startObject()
+                .field("id", getId())
+                .field("name", getName())
+                .field("type", getType())
+                .field("imsi", getImsi())
+                .field("timestamp", getTimestamp())
+                .startArray("geoPoint")
+                    .value(getGeoPoint().lon())
+                    .value(getGeoPoint().lat())
+                .endArray()
+            .endObject();
+            return  jsonBuild.string();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
 }

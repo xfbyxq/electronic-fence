@@ -124,6 +124,12 @@
             </dependency>
 
             <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>1.9.3</version>
+            </dependency>
+
+            <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-core</artifactId>
                 <version>${jackson.core.version}</version>
@@ -176,6 +182,12 @@
             </dependency>
 
             <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>2.5</version>
+            </dependency>
+
+            <dependency>
                 <groupId>joda-time</groupId>
                 <artifactId>joda-time</artifactId>
                 <version>2.9.9</version>
@@ -186,6 +198,12 @@
                 <groupId>com.google.maps</groupId>
                 <artifactId>google-maps-services</artifactId>
                 <version>0.2.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>1.2.32</version>
             </dependency>
 
         </dependencies>

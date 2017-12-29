@@ -4,12 +4,14 @@ package com.semptian.dao.es;
 import com.semptian.common.EsPageSearch;
 import com.semptian.common.PageModel;
 import com.semptian.entity.PersionPositionEntity;
-import org.elasticsearch.common.recycler.Recycler;
 import org.elasticsearch.common.xcontent.XContentBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
+import org.elasticsearch.search.sort.SortBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
+
+import java.util.List;
 
 @Repository
 public class PersionPositionMapper {
@@ -63,6 +65,27 @@ public class PersionPositionMapper {
         }
     }
 
+    /**
+     * 插入数据
+     *
+     * @param index
+     * @param type
+     * @param persionList
+     * @return
+     */
+    public void insert(String index, String type, List<PersionPositionEntity> persionList) {
+        for(PersionPositionEntity entity :persionList ){
+            boolean result = insert(index, type, entity);
+        }
+    }
+
+    public boolean delete(String index,String type,String id){
+        if(StringUtils.isEmpty(index) || StringUtils.isEmpty(type) || StringUtils.isEmpty(id)){
+            return false;
+        }
+        return esPageSearch.deleteDoc(index,type,id);
+    }
+
 
     /**
      * 分业查询
@@ -75,6 +98,20 @@ public class PersionPositionMapper {
      * @return
      */
     public PageModel<PersionPositionEntity> findEntityByPage(String[] index, String[] type, QueryBuilder queryBuilder, int onPage, int size) {
+        return findEntityByPage(index,type,queryBuilder,null,null,onPage,size);
+    }
+
+    /**
+     * 分业查询
+     *
+     * @param index        要查询的索引
+     * @param type         要查询的type
+     * @param queryBuilder 查询对象
+     * @param onPage       当前页
+     * @param size         每页数量
+     * @return
+     */
+    public PageModel<PersionPositionEntity> findEntityByPage(String[] index, String[] type, QueryBuilder queryBuilder, QueryBuilder postFilter, SortBuilder sortBuilder, int onPage, int size) {
         if (index == null || index.length == 0 || type == null || type.length == 0) {
             return PageModel.getEmpty();
         }
@@ -86,8 +123,9 @@ public class PersionPositionMapper {
         if (size < 10) {
             size = 10;
         }
-        PageModel<PersionPositionEntity> dataByPage = esPageSearch.getDataByPage(index, type, queryBuilder, onPage, size, PersionPositionEntity.class);
+        PageModel<PersionPositionEntity> dataByPage = esPageSearch.getDataByPage(index, type, queryBuilder,postFilter,sortBuilder, onPage, size, PersionPositionEntity.class);
         return dataByPage;
     }
+
 
 }
