@@ -3,7 +3,6 @@ package com.semptian.utils;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.semptian.entity.PersionPositionEntity;
-import org.elasticsearch.common.geo.GeoPoint;
 import org.springframework.cglib.beans.BeanMap;
 
 import java.util.Date;

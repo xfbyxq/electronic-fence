@@ -1,6 +1,5 @@
 package com.semptian.entity;
 
-import org.elasticsearch.common.geo.GeoPoint;
 
 import java.io.Serializable;
 import java.util.List;
