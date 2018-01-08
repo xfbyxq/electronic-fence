@@ -1,29 +1,21 @@
 package com.semptian.common;
 
-import org.apache.ibatis.annotations.Insert;
-import org.apache.lucene.queryparser.flexible.core.parser.EscapeQuerySyntax;
-import org.elasticsearch.ElasticsearchException;
-import org.elasticsearch.action.admin.indices.create.CreateIndexResponse;
-import org.elasticsearch.action.admin.indices.mapping.put.PutMappingRequest;
-import org.elasticsearch.action.index.IndexResponse;
-import org.elasticsearch.client.Requests;
+
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
-import org.elasticsearch.common.transport.TransportAddress;
-import org.elasticsearch.common.xcontent.XContentBuilder;
+
 import org.elasticsearch.transport.client.PreBuiltTransportClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Scope;
+
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.PostConstruct;
 import java.net.InetAddress;
-import java.util.Calendar;
-import java.util.concurrent.ExecutionException;
+
 
 @Component
 public class EsClient {

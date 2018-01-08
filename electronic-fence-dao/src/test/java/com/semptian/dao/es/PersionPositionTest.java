@@ -27,7 +27,7 @@ public class PersionPositionTest {
     @Autowired
     private PersionPositionMapper persionPosition;
 
-    private String index = "pointdemo";
+    private String index = "electronicfence";
 
     private String type = "default";
 

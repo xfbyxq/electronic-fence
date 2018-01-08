@@ -1,9 +1,5 @@
 package com.semptian.common;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.semptian.entity.PersionPositionEntity;
-import com.semptian.utils.BeanUtils;
 import org.elasticsearch.ElasticsearchException;
 import org.elasticsearch.action.admin.indices.create.CreateIndexResponse;
 import org.elasticsearch.action.admin.indices.mapping.put.PutMappingRequest;
@@ -17,8 +13,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 public abstract class EsBuilder {
